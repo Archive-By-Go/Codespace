@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <meta charset="UTF-8">
+    <style>
+        html, body {
+            margin: 0;
+            height: 100%;
+            background: black;
+        }
+    </style>
+</head>
+<body>
+
+    <!-- الصوت الافتراضي (يعمل حتى لو كان JavaScript معطل) -->
+    <audio id="myAudio" src="sound.mp3" autoplay controls style="display:none;"></audio>
+
+    <noscript>
+        <!-- إذا كان JavaScript معطلًا، يعرض عنصر الصوت فقط -->
+        <audio src="sound.mp3" autoplay controls></audio>
+    </noscript>
+
+    <script>
+        const audio = document.getElementById('myAudio');
+
+        // تشغيل تلقائي متكرر
+        audio.addEventListener('ended', () => {
+            audio.currentTime = 0;
+            audio.play();
+        });
+
+        // إزالة أي أزرار تحكم عند JavaScript مفعل
+        audio.removeAttribute('controls');
+    </script>
+
+</body>
+</html>
